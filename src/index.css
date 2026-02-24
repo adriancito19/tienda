@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Colors */
+  --bg-primary: #FDFCF8;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent: #D4A373;
+  --accent-light: #E9EDC9;
+  --border: #E5E5E5;
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Navbar Responsive Styles */
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: rgba(253, 252, 248, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--accent);
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+
+  .nav-links,
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 2rem !important;
+    height: auto !important;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-image-container {
+    order: 1;
+    height: 400px !important;
+    justify-content: center !important;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .secondary-image {
+    display: none !important;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .filters-container {
+    gap: 1.5rem !important;
+    overflow-x: auto;
+    padding-bottom: 1.5rem !important;
+    width: 100%;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    gap: 2rem 1rem !important;
+  }
+
+}
