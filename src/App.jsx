@@ -3,17 +3,27 @@ import { CartProvider } from './context/CartContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProductSection from './components/ProductSection'
+import CartDrawer from './components/CartDrawer'
+import CheckoutModal from './components/CheckoutModal'
 import './index.css'
 
 function App() {
+  const [isCheckoutOpen, setIsCheckoutOpen] = React.useState(false);
+
   return (
     <CartProvider>
       <div className="app-wrapper">
         <Navbar />
+        <CartDrawer onCheckout={() => setIsCheckoutOpen(true)} />
         <main>
           <Hero />
           <ProductSection />
         </main>
+
+        <CheckoutModal
+          isOpen={isCheckoutOpen}
+          onClose={() => setIsCheckoutOpen(false)}
+        />
 
 
         <footer style={{

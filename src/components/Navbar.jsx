@@ -3,7 +3,7 @@ import { ShoppingBag, User, Search } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
-    const { cartCount } = useCart();
+    const { cartCount, openCart } = useCart();
 
     return (
         <nav className="navbar">
@@ -24,7 +24,10 @@ const Navbar = () => {
                 <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                     <Search size={20} strokeWidth={1.5} color="var(--text-primary)" style={{ cursor: 'pointer' }} className="hide-mobile" />
                     <User size={20} strokeWidth={1.5} color="var(--text-primary)" style={{ cursor: 'pointer' }} />
-                    <div style={{ position: 'relative', cursor: 'pointer' }}>
+                    <div
+                        style={{ position: 'relative', cursor: 'pointer' }}
+                        onClick={openCart}
+                    >
                         <ShoppingBag size={20} strokeWidth={1.5} color="var(--text-primary)" />
                         {cartCount > 0 && (
                             <span className="cart-badge">

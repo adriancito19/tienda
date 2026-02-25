@@ -10,6 +10,10 @@ export const CartProvider = ({ children }) => {
         return savedCart ? JSON.parse(savedCart) : [];
     });
 
+    const [isOpen, setIsOpen] = useState(false);
+    const openCart = () => setIsOpen(true);
+    const closeCart = () => setIsOpen(false);
+
     useEffect(() => {
         localStorage.setItem('tienda_cart', JSON.stringify(cart));
     }, [cart]);
@@ -24,6 +28,7 @@ export const CartProvider = ({ children }) => {
             }
             return [...prevCart, { ...product, quantity: 1 }];
         });
+        openCart(); // Auto-open cart when adding an item
     };
 
     const removeFromCart = (productId) => {
@@ -39,11 +44,26 @@ export const CartProvider = ({ children }) => {
         );
     };
 
+    const clearCart = () => {
+        setCart([]);
+    };
+
     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
     const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, cartCount, cartTotal }}>
+        <CartContext.Provider value={{
+            cart,
+            addToCart,
+            removeFromCart,
+            updateQuantity,
+            clearCart,
+            cartCount,
+            cartTotal,
+            isOpen,
+            openCart,
+            closeCart
+        }}>
             {children}
         </CartContext.Provider>
     );
