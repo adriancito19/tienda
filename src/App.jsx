@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import Storefront from './components/Storefront'
 import AdminLayout from './components/AdminLayout'
@@ -9,14 +9,14 @@ import './index.css'
 function App() {
   return (
     <CartProvider>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/*" element={<Storefront />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminProducts />} />
           </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </CartProvider>
   )
 }
